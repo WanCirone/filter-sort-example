@@ -7,38 +7,32 @@ import { useEffect, useState } from 'react';
 
 
 function Container() {
+    //Traigo la data del store 
     const data = useSelector(state => state.data)
 
+    //Mantengo estados de la categoría seleccionada en el dropdown y de los productos
     const [selected, setSelected] = useState("ninguno");
     const [products, setProducts] = useState([]);
 
-
+    
     console.log(selected, products, data)
 
     useEffect(() => {
         let filteredProducts = data;
-        let todos;
-       // console.log(filteredProducts)
-      //  console.log(products, selected)
-      //  console.log(selected.selected, ["todos"])
-        if(selected.selected === ["todos"]) {
-            console.log('entré al todos')
-            todos = data;
-            setProducts(todos);
-        }
-        else if(selected !== 'ninguno') {
+        if(selected !== 'ninguno') {
             filteredProducts = filteredProducts.filter( product => 
                 product.category === selected.selected[0]
             )
             setProducts(filteredProducts)
-         //   console.log('FILTRADOS', products)
         }
-        // else {
-        //    console.log('Entre por NINGUNO')
-        //    setProducts(data)
-        // }
+        else {
+           setProducts(data)
+        }
     },[data, selected])
 
+    
+    //Depende cuál sea el button que recibió el click, va a ordenar en forma asc ó des
+    //Se trae una copia del estado de productos y ordena
     function handleSort(name) {
         console.log('Me presionaron')
         console.log(name)
@@ -56,6 +50,8 @@ function Container() {
         }
     }
 
+    //El dropdown va a recibir un aviso del hijo (Dropdown.jsx) y llama a la función setSelected para cambiar el estado a selected (Hook State)
+    //Sort va a recibir un aviso cuando se hagan clicks en Sort.jsx y va a llamar a la función handleSort
     return(
         <div>
             <div className={s.div} >
@@ -63,7 +59,6 @@ function Container() {
                 <Sort onClick={name =>handleSort(name)} />
             </div>
             <div className={s.container} >
-
                 { [...products].map((d, i) => 
                 <Card 
                 title={products[i].title} 

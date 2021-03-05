@@ -1,5 +1,7 @@
 import s from '../styles/card.module.css';
 
+//Componente presentacional de una card individual.
+//Recibe las props del padre -> el Container
 function Card(props) {
     return (
         <div className={s.card} >

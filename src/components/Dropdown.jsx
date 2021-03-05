@@ -1,6 +1,6 @@
 import s from '../styles/dropdown.module.css';
 
-
+//Dropdown para filtrar por categorias. ES quien le va a avisar al padre que ocurrió un evento
 function Dropdown(props) {
     return(
         <div className={s.drop}>

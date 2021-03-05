@@ -1,5 +1,6 @@
 import s from '../styles/sort.module.css';
 
+//Botones para ordenar de forma ascendente y descendente. Van a avisar a su padre cuando reciban un click
 function Sort(props) {
     return(
         <div>
