@@ -1,5 +1,4 @@
 export const SET_DATA = 'GET_DATA';
-export const SELECT = 'SELECT';
 
 export function setData(data) {
     return function(dispatch) {
@@ -7,8 +6,3 @@ export function setData(data) {
     }
 }
 
-export function select(selected) {
-    return function(dispatch) {
-        return dispatch({type: SELECT, payload: selected})
-    }
-}

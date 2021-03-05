@@ -5,8 +5,8 @@ function Card(props) {
         <div className={s.card} >
             <p>Title: {props.title}</p> 
             <p>Description: {props.description}</p>
-            <p>Price: ${props.price}</p>
-            <p>Category: {props.category}</p>
+            <p className={s.p} >Price: ${props.price}</p>
+            <p className={s.p}>Category: {props.category}</p>
         </div>
     )
 }

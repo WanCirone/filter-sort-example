@@ -1,7 +1,7 @@
-import { SET_DATA, SELECT } from './actions';
+import { SET_DATA } from './actions';
 
 const initialState = {
-    data: []
+    data: [],
 }
 
 export default function reducer(state = initialState, action) {
@@ -9,12 +9,6 @@ export default function reducer(state = initialState, action) {
         case SET_DATA:
             return {
                 data: action.payload
-            }
-        case SELECT:
-            return {
-                filtered: {
-                    category: action.payload,
-                }
             }
         default:
             return state;

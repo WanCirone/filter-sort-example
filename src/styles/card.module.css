@@ -3,4 +3,10 @@
     border-radius: 5px;
     max-width: 500px;
     margin: auto;
+    padding-inline: 10px;
+    width: 50ch;
+}
+
+.p {
+    font-weight: 800;
 }
