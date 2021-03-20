@@ -11,7 +11,7 @@ function Container() {
     const data = useSelector(state => state.data)
 
     //Mantengo estados de la categoría seleccionada en el dropdown y de los productos
-    const [selected, setSelected] = useState("ninguno");
+    const [selected, setSelected] = useState("");
     const [products, setProducts] = useState([]);
 
     
@@ -19,9 +19,12 @@ function Container() {
 
     useEffect(() => {
         let filteredProducts = data;
-        if(selected !== 'ninguno') {
+        if(selected.selected == "todos") {
+            setProducts(data);
+        }
+        else if(selected !== "") {
             filteredProducts = filteredProducts.filter( product => 
-                product.category === selected.selected[0]
+                product.category === selected.selected
             )
             setProducts(filteredProducts)
         }
@@ -55,12 +58,13 @@ function Container() {
     return(
         <div>
             <div className={s.div} >
-                <Dropdown onChange={(value) => setSelected({selected: [value]}) } />
+                <Dropdown onChange={(value) => setSelected({selected: value}) } />
                 <Sort onClick={name =>handleSort(name)} />
             </div>
             <div className={s.container} >
                 { [...products].map((d, i) => 
                 <Card 
+                key={products[i].id}
                 title={products[i].title} 
                 description={products[i].description}
                 price={products[i].price}
